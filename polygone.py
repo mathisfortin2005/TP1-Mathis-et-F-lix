@@ -114,6 +114,7 @@ class Vecteur:
     #def y(self):
     #    return self._y
 
+#blabla
 
     def longueur(self):
         # Ajouter l'implémentation de la méthode

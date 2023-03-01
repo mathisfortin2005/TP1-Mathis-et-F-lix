@@ -23,11 +23,30 @@ class Polygone(ABC):
     # doit retourner le périmètre du polygone
     def perimetre(self):
         # Ajouter l'implémentation de la méthode perimetre(self)
-        pass
+        longueur_initiale = []
+        for i in range(1,Polygone.nb_cotes(self)):
+            a = Polygone.liste_vecteur[i]
+            longueur = Vecteur.longueur(a)
+            longueur_initiale = longueur + longueur_initiale
+        """
+        perimetre = 0
+        nombre_cotes = self.nb_cotes()
+        if nombre_cotes < 3:
+            ValueError("Les données entrées ne correspondent pas à un polygone car il n'y a pas au moins 3 côtés")
+        elif nombre_cotes == 3:
+            pass
+        elif nombre_cotes == 4:
+            pass
+        else:
+            pass
+        return perimetre
+        """
 
     def nb_cotes(self):
         # Ajouter l'implémentation de la méthode nb_cotes(self)
-        pass
+        nombre_cotes = len(self._liste_vecteurs)
+        return nombre_cotes
+
 
     def afficher_forme(self):
         points = []
@@ -88,7 +107,53 @@ class Vecteur:
     def point_arrivee(self, valeur):
         self._point_arrivee = valeur
 
+
+    #def x(self):
+    #    return self._x
+
+    #def y(self):
+    #    return self._y
+
+
     def longueur(self):
         # Ajouter l'implémentation de la méthode
-        pass
+        point1 = Point(Vecteur(self._point_depart))
+        point2 = Point(Vecteur(self._point_arrivee))
 
+        y1 = point1.y()
+        y2 = point2.y()
+        x1 = point1.x()
+        x2 = point2.x()
+        """
+        y1 = Point.y(vecteur1.point_depart)
+        y2 = Point.y(vecteur1.point_arrivee)
+        x1 = Point.x(vecteur1.point_depart)
+        x2 = Point.x(vecteur1.point_arrivee)
+        l = ((y2-y1)**2+(x2-x1)**2)**(1/2)
+        return l
+        """
+
+pointA = Point(2, 2)
+pointB = Point(4, 2)
+pointC = Point(4, 4)
+pointD = Point(4, 2)
+vecteur1 = Vecteur(pointA, pointB)
+vecteur2 = Vecteur(pointB, pointC)
+vecteur3 = Vecteur(pointC, pointD)
+vecteur4 = Vecteur(pointD, pointA)
+
+longueur1 = Vecteur.longueur(vecteur1)
+#print(vecteur)
+
+Vecteur.longueur('lAB')
+
+'''
+lAB = Polygone.vecteur(pointA,pointB)
+print(lAB)
+lBC = Polygone.vecteur(pointB,pointC)
+print(lBC)
+lCD = Polygone.vecteur(pointC,pointD)
+print(lCD)
+lDA = Polygone.vecteur(pointD,pointA)
+print(lDA)
+'''

@@ -124,14 +124,9 @@ class Vecteur:
         y2 = point2.y()
         x1 = point1.x()
         x2 = point2.x()
-        """
-        y1 = Point.y(vecteur1.point_depart)
-        y2 = Point.y(vecteur1.point_arrivee)
-        x1 = Point.x(vecteur1.point_depart)
-        x2 = Point.x(vecteur1.point_arrivee)
         l = ((y2-y1)**2+(x2-x1)**2)**(1/2)
         return l
-        """
+
 
 pointA = Point(2, 2)
 pointB = Point(4, 2)

@@ -124,7 +124,7 @@ class Vecteur:
         x1 = point1.x()
         x2 = point2.x()
         l = ((y2-y1)**2+(x2-x1)**2)**(1/2)
-        return l
+        print(l)
 
 
 pointA = Point(2, 2)

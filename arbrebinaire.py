@@ -26,16 +26,23 @@ class Noeud:
 
     def insertion(self, equipe):
         # Ajouter l'implémentation d'insertion(self, equipe)
-        pass
+        if equipe.equipe < self.__equipe:
+            if self._gauche is None:
+                self.__gauche = equipe
+            else:
+                if self._droite is None:
+                    self.__gauche.insertion(equipe)
+                else:
+                    self._droite.insertion(equipe)
 
 
     # Afficher l'arbre
     def afficher_arbre(self):
-        if self._gauche:
-            self._gauche.afficher_arbre(self)
+        if self.__gauche:
+            self.__gauche.afficher_arbre(self)
         self._equipe.afficher(),
-        if self._droite:
-            self._droite.afficher_arbre()
+        if self.__droite:
+            self.__droite.afficher_arbre()
 
 
 class EquipeLNH:
@@ -46,11 +53,11 @@ class EquipeLNH:
 
     @property
     def equipe(self):
-        return self._equipe
+        return self.__equipe
 
     @equipe.setter
     def equipe(self, valeur):
-        self._equipe = valeur
+        self.__equipe = valeur
 
     @property
     def nom(self):

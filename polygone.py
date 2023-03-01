@@ -119,7 +119,6 @@ class Vecteur:
         # Ajouter l'implémentation de la méthode
         point1 = Point(Vecteur(self._point_depart))
         point2 = Point(Vecteur(self._point_arrivee))
-
         y1 = point1.y()
         y2 = point2.y()
         x1 = point1.x()

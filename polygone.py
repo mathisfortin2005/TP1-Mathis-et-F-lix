@@ -23,11 +23,11 @@ class Polygone(ABC):
     # doit retourner le périmètre du polygone
     def perimetre(self):
         # Ajouter l'implémentation de la méthode perimetre(self)
-        longueur_initiale = []
+        longueur_initiale = 0
         for i in range(1,Polygone.nb_cotes(self)):
             a = Polygone.liste_vecteur[i]
             longueur = Vecteur.longueur(a)
-            longueur_initiale = longueur + longueur_initiale
+            longueur_initiale = int(longueur) + longueur_initiale
         """
         perimetre = 0
         nombre_cotes = self.nb_cotes()

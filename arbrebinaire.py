@@ -1,4 +1,6 @@
 import csv
+
+
 # Arbre binaire de recherche
 class Noeud:
 
@@ -23,7 +25,7 @@ class Noeud:
     def droite(self, valeur):
         self._droite = valeur
 
-    # Créer l'arbre
+    #La méthode insertion permet de créer l'arbre
     def insertion(self, equipe):
         if equipe.total_points() < self._equipe.total_points():
             if self._gauche is None:
@@ -36,14 +38,13 @@ class Noeud:
             else:
                 self._droite.insertion(equipe)
 
-
-    # Afficher l'arbre
+    #La méthode afficher_arbre permet d'afficher l'arbre
     def afficher_arbre(self):
-        if self.__gauche:
-            self.__gauche.afficher_arbre()
+        if self._gauche:
+            self._gauche.afficher_arbre()
         self._equipe.afficher(),
-        if self.__droite:
-            self.__droite.afficher_arbre()
+        if self._droite:
+            self._droite.afficher_arbre()
 
 
 class EquipeLNH:
@@ -78,12 +79,13 @@ class EquipeLNH:
 
     #La méthode total_points retourne le nombre de points
     def total_points(self):
-        points = self.data['V']*2 + self.data['DP'] #Permet d'aller chercher les données à partir d'une liste et de faire le calcul
+        points = int(self.data['V'])*2 + int(self.data['DP'])
+        #Permet d'aller chercher les données à partir d'une liste et de faire le calcul
         return points
 
     #La méthode moyenne_but_par_match retourne le nombre de but par match moyen
     def moyenne_but_par_match(self):
-        moyennes_buts = self.data['BP']/self.data['MJ']
+        moyennes_buts = int(self.data['BP'])/int(self.data['MJ'])
         return moyennes_buts
 
     def afficher(self):
@@ -108,24 +110,26 @@ class DataUtils:
                     lignes += 1
             return liste_equipes
 
+    #La méthode moyenne_haut_bas prend en entrée la liste d'équipe et retourne 2 tuples, bas et haut,
+    #Le tuple bas contient les équipes qui sont sous la moyenne de but par match
+    #Le tuple haut contient les équipes qui sont sur ou égales à la moyenne de but par match
     @staticmethod
     def moyenne_haut_bas(liste_equipes):
-        # Implémenter la méthode
-        moyenne_but_equipe = 0
-        for i in len(liste_equipes):
-            moyenne_but_equipe += liste_equipes[0].moyenne_but_par_match()
+        moyenne_but_equipe = 0 #Initialisation de la variable moyenne_but_equipe
+        listebas = [] #Création de la liste listebas
+        listehaut = [] #Création de la liste listehaut
+        for i in range(len(liste_equipes)):
+            moyenne_but_equipe += liste_equipes[i].moyenne_but_par_match()
         moyenne_but_tt_equipe = moyenne_but_equipe / len(liste_equipes)
-
-        for i in len(liste_equipes):
-
-        bas = []
-        haut = []
-        if moyenne_but_tt_equipe < liste_equipes
-            a
-        else:
-            a
-        #Transformer en tuple
+        for j in range(len(liste_equipes)):
+            if moyenne_but_tt_equipe < liste_equipes[j].moyenne_but_par_match():
+                listebas.append(liste_equipes[j])
+            else:
+                listehaut.append(liste_equipes[j])
+        bas = tuple(listebas)
+        haut = tuple(listehaut)
         return bas, haut
+
 
 # Code pour tester
 racine = None
@@ -146,4 +150,3 @@ for equipe in bas:
 print('Au dessus de la moyenne BP/MJ')
 for equipe in haut:
     equipe.afficher()
-

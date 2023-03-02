@@ -6,8 +6,6 @@ from abc import ABC, abstractmethod
 class Polygone(ABC):
 
     _liste_vecteurs = []
-    def __init__(self,*args):
-        self._liste_vecteurs = _liste_vecteurs + vecteur4
 
     @property
     def liste_vecteurs(self):
@@ -17,37 +15,21 @@ class Polygone(ABC):
     def liste_vecteurs(self, nouvelle_liste):
         self._liste_vecteurs = nouvelle_liste
 
-    # doit retourner l'aire du polygone
+    #À COMPLÉTER doit retourner l'aire du polygone
     @abstractmethod
     def aire(self):
         pass
 
-    # doit retourner le périmètre du polygone
+    #La méthode perimetre retourne le périmètre du polygone
     def perimetre(self):
-        # Ajouter l'implémentation de la méthode perimetre(self)
-        longueur_initiale = 0
-        for i in range(1, Polygone.nb_cotes(self)):
-            a = Polygone.liste_vecteurs[i]
-            longueur = Vecteur.longueur(a)
-            longueur_initiale = int(longueur) + longueur_initiale
-
-        """
         perimetre = 0
-        nombre_cotes = self.nb_cotes()
-        if nombre_cotes < 3:
-            ValueError("Les données entrées ne correspondent pas à un polygone car il n'y a pas au moins 3 côtés")
-        elif nombre_cotes == 3:
-            pass
-        elif nombre_cotes == 4:
-            pass
-        else:
-            pass
+        for i in range(len(self.liste_vecteurs)):
+            longueur_cote = self.liste_vecteurs[i].longueur #Utilisation de la méthode longueur
+            perimetre += longueur_cote
         return perimetre
-        """
 
     #La méthode nb_cotes retourne le nombre de côtés du polygone
     def nb_cotes(self):
-        # Ajouter l'implémentation de la méthode nb_cotes(self)
         nombre_cotes = len(self._liste_vecteurs)
         return nombre_cotes
 
@@ -64,9 +46,31 @@ class Polygone(ABC):
         plt.ylim(-10, 10)
         plt.show()
 
-class Triangle(Polygone)
 
-    super.__init__(self)
+#À COMPLÉTER
+#Création de la classe Triangle qui implémente la classe abstraite Polygone
+class Triangle(Polygone):
+
+    #Constructeur de la classe Triangle
+    def __init__(self, vecteur1, vecteur2, vecteur3):
+        self._vecteur1 = vecteur1
+        self._vecteur2 = vecteur2
+        self._vecteur3 = vecteur3
+
+
+#À COMPLÉTER
+#Création de la classe HexagoneRegulier qui implémente la classe abstraite Polygone
+class HexagoneRegulier(Polygone):
+
+    #Constructeur de la classe HexagoneRegulier
+    def __init__(self, vecteur1, vecteur2, vecteur3, vecteur4, vecteur5, vecteur6):
+        self._vecteur1 = vecteur1
+        self._vecteur2 = vecteur2
+        self._vecteur3 = vecteur3
+        self._vecteur4 = vecteur4
+        self._vecteur5 = vecteur5
+        self._vecteur6 = vecteur6
+
 
 class Point:
 
@@ -126,14 +130,21 @@ class Vecteur:
         l = ((y2-y1)**2+(x2-x1)**2)**(1/2) #Pour calculer la longueur
         return l
 
-
+#Valeurs pour faire des tests
 pointA = Point(2, 2)
-pointB = Point(4, 2)
-pointC = Point(4, 4)
-pointD = Point(4, 2)
+pointB = Point(3, 1)
+pointC = Point(4, 2)
+pointD = Point(4, 4)
+pointE = Point(3, 5)
+pointF = Point(2, 4)
 vecteur1 = Vecteur(pointA, pointB)
 vecteur2 = Vecteur(pointB, pointC)
 vecteur3 = Vecteur(pointC, pointD)
-vecteur4 = Vecteur(pointD, pointA)
-
-print(vecteur1.longueur())
+vecteur4 = Vecteur(pointD, pointE)
+vecteur5 = Vecteur(pointE, pointF)
+vecteur6 = Vecteur(pointF, pointA)
+vecteur7 = Vecteur(pointA, pointC)
+vecteur8 = Vecteur(pointD, pointA)
+vecteur1.longueur()
+triangle1 = Triangle(vecteur3, vecteur7, vecteur8)#À compléter pour tests
+hexagone1 = HexagoneRegulier(vecteur1, vecteur2, vecteur3, vecteur4, vecteur5, vecteur6)#À compléter pour tests

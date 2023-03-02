@@ -23,23 +23,24 @@ class Noeud:
     def droite(self, valeur):
         self._droite = valeur
 
-
+    # Créer l'arbre
     def insertion(self, equipe):
-        # Ajouter l'implémentation d'insertion(self, equipe)
-        if equipe.equipe < self.__equipe:
+        if equipe.total_points() < self._equipe.total_points():
             if self._gauche is None:
-                self.__gauche = equipe
+                self.__gauche = Noeud(equipe)
             else:
-                if self._droite is None:
-                    self.__gauche.insertion(equipe)
-                else:
-                    self._droite.insertion(equipe)
+                self.__gauche.insertion(equipe)
+        else:
+            if self._droite is None:
+                self._droite = Noeud(equipe)
+            else:
+                self._droite.insertion(equipe)
 
 
     # Afficher l'arbre
     def afficher_arbre(self):
         if self.__gauche:
-            self.__gauche.afficher_arbre(self)
+            self.__gauche.afficher_arbre()
         self._equipe.afficher(),
         if self.__droite:
             self.__droite.afficher_arbre()
@@ -75,13 +76,15 @@ class EquipeLNH:
     def data(self, valeur):
         self.__data = valeur
 
+    #La méthode total_points retourne le nombre de points
     def total_points(self):
-        # Ajouter l'implémentation, doit retourner le nombre total de points
-        pass
+        points = self.data['V']*2 + self.data['DP'] #Permet d'aller chercher les données à partir d'une liste et de faire le calcul
+        return points
 
+    #La méthode moyenne_but_par_match retourne le nombre de but par match moyen
     def moyenne_but_par_match(self):
-        # Ajouter l'ìmplémentation
-        pass
+        moyennes_pts = self.data['']/self.data['']
+        return moyennes_pts
 
     def afficher(self):
         print(self.nom + '\t\t\tPts: ' + str(self.total_points()) + '\tBP/MJ: ' + str(self.moyenne_but_par_match()))

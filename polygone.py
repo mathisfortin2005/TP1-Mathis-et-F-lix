@@ -6,6 +6,8 @@ from abc import ABC, abstractmethod
 class Polygone(ABC):
 
     _liste_vecteurs = []
+    def __init__(self,*args):
+        self._liste_vecteurs = _liste_vecteurs + vecteur4
 
     @property
     def liste_vecteurs(self):
@@ -24,10 +26,11 @@ class Polygone(ABC):
     def perimetre(self):
         # Ajouter l'implémentation de la méthode perimetre(self)
         longueur_initiale = 0
-        for i in range(1,Polygone.nb_cotes(self)):
-            a = Polygone.liste_vecteur[i]
+        for i in range(1, Polygone.nb_cotes(self)):
+            a = Polygone.liste_vecteurs[i]
             longueur = Vecteur.longueur(a)
             longueur_initiale = int(longueur) + longueur_initiale
+
         """
         perimetre = 0
         nombre_cotes = self.nb_cotes()
@@ -42,11 +45,11 @@ class Polygone(ABC):
         return perimetre
         """
 
+    #La méthode nb_cotes retourne le nombre de côtés du polygone
     def nb_cotes(self):
         # Ajouter l'implémentation de la méthode nb_cotes(self)
         nombre_cotes = len(self._liste_vecteurs)
         return nombre_cotes
-
 
     def afficher_forme(self):
         points = []
@@ -61,6 +64,9 @@ class Polygone(ABC):
         plt.ylim(-10, 10)
         plt.show()
 
+class Triangle(Polygone)
+
+    super.__init__(self)
 
 class Point:
 
@@ -107,25 +113,18 @@ class Vecteur:
     def point_arrivee(self, valeur):
         self._point_arrivee = valeur
 
-
-    #def x(self):
-    #    return self._x
-
-    #def y(self):
-    #    return self._y
-
-#blabla
-
+    #La méthode longueur retourne la longueur du polygone
     def longueur(self):
-        # Ajouter l'implémentation de la méthode
-        point1 = Point(Vecteur(self._point_depart))
-        point2 = Point(Vecteur(self._point_arrivee))
-        y1 = point1.y()
-        y2 = point2.y()
-        x1 = point1.x()
-        x2 = point2.x()
-        l = ((y2-y1)**2+(x2-x1)**2)**(1/2)
-        print(l)
+        point1 = self._point_depart #Le point1 représente le point de départ du vecteur
+        point2 = self._point_arrivee #Le point2 représente le point d'arrivé du vecteur
+        # Pour aller chercher les y
+        y1 = point1.y
+        y2 = point2.y
+        # Pour aller chercher les x
+        x1 = point1.x
+        x2 = point2.x
+        l = ((y2-y1)**2+(x2-x1)**2)**(1/2) #Pour calculer la longueur
+        return l
 
 
 pointA = Point(2, 2)
@@ -137,18 +136,4 @@ vecteur2 = Vecteur(pointB, pointC)
 vecteur3 = Vecteur(pointC, pointD)
 vecteur4 = Vecteur(pointD, pointA)
 
-longueur1 = Vecteur.longueur(vecteur1)
-#print(vecteur)
-
-Vecteur.longueur('lAB')
-
-'''
-lAB = Polygone.vecteur(pointA,pointB)
-print(lAB)
-lBC = Polygone.vecteur(pointB,pointC)
-print(lBC)
-lCD = Polygone.vecteur(pointC,pointD)
-print(lCD)
-lDA = Polygone.vecteur(pointD,pointA)
-print(lDA)
-'''
+print(vecteur1.longueur())

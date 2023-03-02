@@ -83,8 +83,8 @@ class EquipeLNH:
 
     #La méthode moyenne_but_par_match retourne le nombre de but par match moyen
     def moyenne_but_par_match(self):
-        moyennes_pts = self.data['']/self.data['']
-        return moyennes_pts
+        moyennes_buts = self.data['BP']/self.data['MJ']
+        return moyennes_buts
 
     def afficher(self):
         print(self.nom + '\t\t\tPts: ' + str(self.total_points()) + '\tBP/MJ: ' + str(self.moyenne_but_par_match()))
@@ -111,8 +111,20 @@ class DataUtils:
     @staticmethod
     def moyenne_haut_bas(liste_equipes):
         # Implémenter la méthode
-        bas = ()
-        haut = ()
+        moyenne_but_equipe = 0
+        for i in len(liste_equipes):
+            moyenne_but_equipe += liste_equipes[0].moyenne_but_par_match()
+        moyenne_but_tt_equipe = moyenne_but_equipe / len(liste_equipes)
+
+        for i in len(liste_equipes):
+
+        bas = []
+        haut = []
+        if moyenne_but_tt_equipe < liste_equipes
+            a
+        else:
+            a
+        #Transformer en tuple
         return bas, haut
 
 # Code pour tester

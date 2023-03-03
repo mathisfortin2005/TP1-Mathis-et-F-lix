@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 from abc import ABC, abstractmethod
+import math as m
 
 
 class Polygone(ABC):
@@ -47,23 +48,26 @@ class Polygone(ABC):
         plt.show()
 
 
-#À COMPLÉTER
 #Création de la classe Triangle qui implémente la classe abstraite Polygone
 class Triangle(Polygone):
-
     #Constructeur de la classe Triangle
-    def __init__(self, vecteur1, vecteur2, vecteur3):
+    def init(self, vecteur1, vecteur2, vecteur3):
         self._vecteur1 = vecteur1
         self._vecteur2 = vecteur2
         self._vecteur3 = vecteur3
 
+    #Méthode pour le calcul de l'aire d'un triangle
+    def aire(self):
+        hauteur = m.sqrt(self._vecteur2.longueur  2 - (self._vecteur1.longueur / 2)  2)
+        aire = (self._vecteur1 * hauteur) / 2
+        return aire
 
-#À COMPLÉTER
+
 #Création de la classe HexagoneRegulier qui implémente la classe abstraite Polygone
 class HexagoneRegulier(Polygone):
 
     #Constructeur de la classe HexagoneRegulier
-    def __init__(self, vecteur1, vecteur2, vecteur3, vecteur4, vecteur5, vecteur6):
+    def init(self, vecteur1, vecteur2, vecteur3, vecteur4, vecteur5, vecteur6):
         self._vecteur1 = vecteur1
         self._vecteur2 = vecteur2
         self._vecteur3 = vecteur3
@@ -71,12 +75,21 @@ class HexagoneRegulier(Polygone):
         self._vecteur5 = vecteur5
         self._vecteur6 = vecteur6
 
+    #Méthode de calcul de l'aire d'un hexagone régulier
+    def aire(self):
+        aire = 3 * m.sqrt(3) / 2 * (self._vecteur1) ** 2
+        return aire
+
 
 class Point:
 
-    def __init__(self, x, y):
-        self._x = x
-        self._y = y
+    def init(self, x, y):
+            self._x = x
+            self._y = y
+
+        #Validation de valeur par les points
+        if x < 10 or 10 < x or y < 10 or 10 < y:
+            raise ValueError("La valeur de x ou y doit être entre -10 et 10")
 
     @property
     def x(self):

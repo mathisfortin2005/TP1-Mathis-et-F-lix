@@ -51,14 +51,14 @@ class Polygone(ABC):
 #Création de la classe Triangle qui implémente la classe abstraite Polygone
 class Triangle(Polygone):
     #Constructeur de la classe Triangle
-    def init(self, vecteur1, vecteur2, vecteur3):
+    def __init__(self, vecteur1, vecteur2, vecteur3):
         self._vecteur1 = vecteur1
         self._vecteur2 = vecteur2
         self._vecteur3 = vecteur3
 
     #Méthode pour le calcul de l'aire d'un triangle
     def aire(self):
-        hauteur = m.sqrt(self._vecteur2.longueur  2 - (self._vecteur1.longueur / 2)  2)
+        hauteur = m.sqrt(self._vecteur2.longueur() * 2 - (self._vecteur1.longueur / 2) * 2)
         aire = (self._vecteur1 * hauteur) / 2
         return aire
 
@@ -67,7 +67,7 @@ class Triangle(Polygone):
 class HexagoneRegulier(Polygone):
 
     #Constructeur de la classe HexagoneRegulier
-    def init(self, vecteur1, vecteur2, vecteur3, vecteur4, vecteur5, vecteur6):
+    def __init__(self, vecteur1, vecteur2, vecteur3, vecteur4, vecteur5, vecteur6):
         self._vecteur1 = vecteur1
         self._vecteur2 = vecteur2
         self._vecteur3 = vecteur3
@@ -83,12 +83,12 @@ class HexagoneRegulier(Polygone):
 
 class Point:
 
-    def init(self, x, y):
-            self._x = x
-            self._y = y
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
 
         #Validation de valeur par les points
-        if x < 10 or 10 < x or y < 10 or 10 < y:
+        if self._x < 10 or 10 < self._x or self._y < 10 or 10 < self._y:
             raise ValueError("La valeur de x ou y doit être entre -10 et 10")
 
     @property

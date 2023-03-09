@@ -1,3 +1,12 @@
+"""
+TP1
+Noms : Mathis Fortin et Félix Chamberland
+Groupe : 00002
+Travail réalisé dans le cadre du cours "420 SD2-HY Programmation orientée objet" donné par M. Pier Luc Ducharme
+Dernière modification : 2023-03-09
+Version 1
+"""
+
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 from abc import ABC, abstractmethod

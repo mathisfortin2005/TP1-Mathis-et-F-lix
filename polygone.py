@@ -25,7 +25,7 @@ class Polygone(ABC):
     def liste_vecteurs(self, nouvelle_liste):
         self._liste_vecteurs = nouvelle_liste
 
-    #À COMPLÉTER doit retourner l'aire du polygone
+    #Définition de la méthode abstraite aire
     @abstractmethod
     def aire(self):
         pass
@@ -97,7 +97,7 @@ class Point:
         self._y = y
 
         #Validation de valeur par les points
-        if self._x < 10 or 10 < self._x or self._y < 10 or 10 < self._y:
+        if self._x < -10 or 10 < self._x or self._y < -10 or 10 < self._y:
             raise ValueError("La valeur de x ou y doit être entre -10 et 10")
 
     @property
@@ -168,5 +168,5 @@ vecteur6 = Vecteur(pointF, pointA)
 vecteur7 = Vecteur(pointA, pointC)
 vecteur8 = Vecteur(pointD, pointA)
 vecteur1.longueur()
-triangle1 = Triangle(vecteur3, vecteur7, vecteur8)#À compléter pour tests
-hexagone1 = HexagoneRegulier(vecteur1, vecteur2, vecteur3, vecteur4, vecteur5, vecteur6)#À compléter pour tests
+triangle1 = Triangle(vecteur3, vecteur7, vecteur8)
+hexagone1 = HexagoneRegulier(vecteur1, vecteur2, vecteur3, vecteur4, vecteur5, vecteur6)
